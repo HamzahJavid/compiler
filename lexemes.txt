@@ -1,0 +1,58 @@
+<Adadi,keyword>
+<Marqazi,keyword>
+<(,punctuation>
+<),punctuation>
+<{,punctuation>
+<Adadi,keyword>
+<_num ,identifier>
+<= ,operator>
+<10,number>
+<::,punctuation>
+<Ashriya,keyword>
+<num_ ,identifier>
+<= ,operator>
+<-10.5E+12 ,number>
+<::,punctuation>
+<Ashriya,keyword>
+<n_umber ,identifier>
+<= ,operator>
+<+9.3,number>
+<::,punctuation>
+<Harf,keyword>
+<cou_se ,identifier>
+<= ,operator>
+<punctuation,">
+<literal,c>
+<punctuation,">
+<literal, ::>
+<Matn,keyword>
+<course_ ,identifier>
+<= ,operator>
+<punctuation,">
+<literal,Compiler Construction>
+<punctuation,">
+<literal, ::>
+<Mantiqi,keyword>
+<_flag ,identifier>
+<= ,operator>
+<True,keyword>
+<::,punctuation>
+<Agar,keyword>
+<(,punctuation>
+<_flag ,identifier>
+<),punctuation>
+<output<-,operator>
+<punctuation,">
+<literal,Ok>
+<punctuation,">
+<literal, ::>
+<Wagarna,keyword>
+<input->,keyword>
+<_num ,identifier>
+<::,punctuation>
+<Wapas,keyword>
+<0,number>
+<::,punctuation>
+<},punctuation>
+<dhsajd_sadsad
+,identifier>

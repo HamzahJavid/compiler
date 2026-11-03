@@ -1,0 +1,11 @@
+<Adadi,keyword>
+<functio_ ,identifier>
+<(,punctuation>
+<),punctuation>
+<{,punctuation>
+<Adadi,keyword>
+<_num ,identifier>
+<= ,operator>
+<10,number>
+<::,punctuation>
+<},punctuation>

@@ -1,0 +1,116 @@
+								 3 ADRESS CODE SEMANTIC RULES ON LL1 OF GIVEN GRAMMAR
+
+				ROLLNUMBER:22L-6669									Section:6G
+
+
+Stmt → WhileStmt{Stmt.addr = WhileStmt.addr} 
+	|Expr :: {Stmt.addr = Expr.addr}
+	|IfStmt {Stmt.addr = IfStmt.addr}
+	|CompStmt {Stmt.addr = CompStmt.addr}
+
+Type → Adadi {Type.addr = top.get(Adadi.lexeme)}
+	| Ashriya{Type.addr=top.get(Ashriya.lexeme)} 
+	| Harf{Type.addr=top.get(Harf.lexeme)} 
+	| Matn {Type.addr=top.get(Matn.lexeme)}
+	|Mantaqi{Type.addr=top.get(Mantaqi.lexeme)}
+
+WhileStmt → while (Rvalue) Stmt{
+	Begin=newlabel()
+	R.true=newlabe()
+	R.false=WhileStmt.next
+	Stmt.next=beign
+	Whilestmt.code=label(begin)||Rvalue.code||label(Rvalue.true)||Stmt.code||gen(‘goto’begin)
+}
+
+
+ifStmt->Agar(Rvalue)Stmt ElsePart{
+	Rvalue.true=newlabel()
+	Rvalue.false=newlabel()
+	Stmt.next=Elsepart.next=ifSTmt.next
+	ifStmt.code=Rvalue.code||label(Rvalue.true)||Stmt.code||gen(‘goto’ifStmt.code)||label(Rvalue.false)||E	lsePArt.code
+}
+
+
+ElsePart->Wgarana Stmt{
+	Elsepart.code=Stmt.code
+	}|^
+
+CompStmt → { StmtList }{
+	CompStmt.addr=StmtList.addr
+	}
+
+StmtList → D{
+	StmtListr.addr=D.addr
+	}
+
+D->Stmt D{
+	D.addr=Stmt.addr||D1.addr
+	}|^
+
+Expr → Identifier := Mag{
+	Gen(top.get(identifier.lexeme) = Mag.addr)
+	}| ^
+
+Rvalue → Mag E{
+	Rvalue.op=E.left
+	Rvalue.addr=Mag.addr||E.addr||gen(if Mag.addr Rvalue.op E.addr goto Rvalue.true)||gen(goto	Rvalue.false)
+}
+
+E→ Relop Mag E {
+	E.left=Relop.val
+	E.addr->Mag.addr
+	}| ∧
+
+Relop → == {Relop.op=’==’}
+	| < {Relop.op =’<’}
+	| > {Relop.op =’>’}
+	| <= {Relop.op =’<=’}
+	| >= {Relop.op =’>=’}
+	| != {Relop.op =’!=’} 
+	| <> {Relop.op =’<>’}
+
+Mag  → Term F{
+	Mag.addr=newTemp()
+	Mag.sym=F.left
+	Gen(Mag.addr=Term.addr Mag.sym F.addr)
+	}
+
+F → + Term F{
+	F.addr=newTemp()
+	F.left=+
+	F.sym=F1.left
+	Gen(F.addr=Term.addr F.sym  F.addr)
+	} 
+	| - Term F {
+	F.addr=newTemp()
+	F.left=-
+	F.sym=F1.left
+	Gen(F.addr=Term.addr F.sym  F.addr)
+	}| ∧
+
+
+Term → Factor G{
+	Term.addr =new Gen()
+	Term.sym=G.left
+	Gen(Term.addr=Factor.addr Term.sym G.addr)
+	}
+
+G → * Factor G {
+	G.addr=new Temp()
+	G.left=’*’
+	G.sym=G1.left
+	Gen(G.addr=Factor.addr G.sym G1.addr)
+	}
+	|/ Factor G {
+	G.addr=new Temp()
+	G.left=’/’
+	G.sym=G1.left
+	Gen(G.addr=Factor.addr G.sym G1.addr)
+	}| ∧
+
+
+Factor → ( Expr ){Factor.addr=getToken(Expr.addr)}
+	| Identifier {Factor.addr=getToken(lexeme.identifier)}
+	| number{Factor.addr=getToekn(lexeme,number)}
+
+

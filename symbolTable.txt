@@ -1,0 +1,19 @@
+1	(	punctuation
+2	)	punctuation
+3	{	punctuation
+4	_num 	identifier
+5	= 	operator
+6	10	number
+7	::	punctuation
+8	num_ 	identifier
+9	-10.5E+12 	number
+10	n_umber 	identifier
+11	+9.3	number
+12	cou_se 	identifier
+13	course_ 	identifier
+14	_flag 	identifier
+15	output<-	operator
+16	0	number
+17	}	punctuation
+18	dhsajd_sadsad
+	identifier
